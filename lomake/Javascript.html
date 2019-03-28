@@ -26,9 +26,11 @@
              <hr>
                 <label for="sähköposti"><b>sähköposti:</b></label>
                 <input type="text" placeholder="sähköposti tähän" name="sähköposti" required>
+                <i class="fa fa-envelope icon"></i>
         </div>
                 <label for="käyttäjä ID"><b>Käyttäjä ID:</b></label>
                 <input type="text" placeholder="Käyttäjä ID" name="Käyttäjä ID" required>
+                
         </div>      
             <input type="password" placeholder="salasana tähän" name="salasana"required>
             <label for="psw"><b>salasana:</b></label>
@@ -37,6 +39,7 @@
                 <label for="psw-repeat"><b>salasana uudestaan:</b></label>
                 <input type="password" placeholder="vahvista salasana" name="psw-repeat" required>
         </div>
+        
                 <hr>
                 <div class="container">
                         <label for="osoite"><b>osoite:</b></label>
@@ -47,22 +50,38 @@
                             <label for="postinumero"><b>postinumero:</b></label>
                             <input type="postinumero" placeholder="postinumero" name="postinumero" required>
 </div>
-                <select>
-                <option value="Suomi">Suomi</option> 
-                <option value="Russia">Russia</option> 
-                <option value="Sweden">Sweden</option> 
-                <option value="United kingdom">United kingdom</option> 
+
+
+                <div>
+                        <h1>Maa</h1>
+                <select>     
+                <option value="Suomi">Suomi</option>
+                <option value="Venäjä">Venäjä</option> 
+                <option value="Ruotsi">Ruotsi</option> 
+                <option value="Iso-britannia">Iso-britannia</option> 
                 </select>
-                    <select>
-                        <option value="Mies">Mies</option>
-                        <option value="Nainen">Nainen</option>
-                        <option value="Muu">Muu</option>
-                    </select>
+        </div>
+                <div>
+                        <h1>Sukupuoli</h1>
+                  <form>
+                        <input type="radio" name="gender" value="Mies" checked> Mies<br>
+                        <input type="radio" name="gender" value="Nainen"> Nainen<br>
+                        <input type="radio" name="gender" value="Muu"> Muu
+                  </form>
+                
+                    <div>
+                            <h1>Kieli</h1>
+                            <label> <input type="checkbox" checked="checked" name="sameadr">Suomi
+                                <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi
+                                </label>
+
+                    </div>
+
                 </div>
                 
                     <div class="container">
                         <label for="lisätietoja"><b>lisätietoja:</b></label>
-                        <input type="lisätietoja" placeholder="lisätietoja" name="lisätietoja">
+                        <textarea id="lisätietoja" name="lisätietoja" placeholder="kirjoita jotain..." style="height:200px"></textarea>
                 </div>
                         <p>kun teet käyttäjän sinä hyväksyt meidän termit. <a href="#"> Terms & Privacy </a></p>
                         <button type="submit" class="registerbtn">rekisteröidy nyt</button>
@@ -74,13 +93,20 @@
                         </div>
                         
 
+<head>
 
+        <link rel="stylesheet" href="java.css"
+</head>
 
 
 
 </body>
 
-
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
 
 
 

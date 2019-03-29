@@ -1,118 +1,98 @@
 <!DOCTYPE html>
 <html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" href="java.css">
+</head>
 <body>
-    
-     <form action="action_page.php">
-        <div class="container">
-                <div class="col">
-                        <a href="#" class="fb btn">
-                          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                        </a>
-                </div>
-                        <a href="#" class="twitter btn">
-                          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                        </a>
-        </div>
-                        <a href="#" class="google btn">
-                          <i class="fa fa-google fa-fw"></i> Login with Google+
-                        </a>
+        
+<div class="container">
 
-                      </div>
+        <h1>rekisteröinti</h1>
 
-            <h1> 
-                rekisteröinti
-            </h1>
-                 <p> UUDEN KÄYTTÄJÄN LUOMINEN TÄHÄN </p>
-             <hr>
-                <label for="sähköposti"><b>sähköposti:</b></label>
-                <input type="text" placeholder="sähköposti tähän" name="sähköposti" required>
-                <i class="fa fa-envelope icon"></i>
-        </div>
-                <label for="käyttäjä ID"><b>Käyttäjä ID:</b></label>
-                <input type="text" placeholder="Käyttäjä ID" name="Käyttäjä ID" required>
+        <p> UUDEN KÄYTTÄJÄN LUOMINEN TÄHÄN </p>
+        <hr>
+        
+        <form onsubmit="checkNimi(event)">
                 
-        </div>      
-            <input type="password" placeholder="salasana tähän" name="salasana"required>
-            <label for="psw"><b>salasana:</b></label>
-                <input type="password" placeholder="salasana" name="psw" required>
-        </div>
+                <div class="form-group">
+                        <label for="sähköposti">sähköposti:</label>
+                        <input type="text" placeholder="sähköposti tähän" name="sähköposti" required>
+                        <i class="fa fa-envelope icon"></i>
+                </div>
+                
+                <div class="form-group">
+                        <label for="käyttäjä ID"><b>Käyttäjä ID:</b></label>
+                        <input type="text" placeholder="Käyttäjä ID" name="user_id" id="user_id" required>
+                </div>
+                
+               <div class="form-group">
+                <label for="psw"><b>salasana:</b></label>
+                <input type="password" placeholder="salasana tähän" name="salasana"required>
                 <label for="psw-repeat"><b>salasana uudestaan:</b></label>
                 <input type="password" placeholder="vahvista salasana" name="psw-repeat" required>
-        </div>
-        
-                <hr>
-                <div class="container">
+                </div>
+                
+                <div class="form-group"> 
+                        <hr>
                         <label for="osoite"><b>osoite:</b></label>
                         <input type="osoite" placeholder="osoite" name="osoite" required>
                 </div>
-                    
-                    <div class="container">
-                            <label for="postinumero"><b>postinumero:</b></label>
-                            <input type="postinumero" placeholder="postinumero" name="postinumero" required>
-</div>
-
-
-                <div>
-                        <h1>Maa</h1>
-                <select>     
-                <option value="Suomi">Suomi</option>
-                <option value="Venäjä">Venäjä</option> 
-                <option value="Ruotsi">Ruotsi</option> 
-                <option value="Iso-britannia">Iso-britannia</option> 
-                </select>
-        </div>
-                <div>
-                        <h1>Sukupuoli</h1>
-                  <form>
-                        <input type="radio" name="gender" value="Mies" checked> Mies<br>
-                        <input type="radio" name="gender" value="Nainen"> Nainen<br>
-                        <input type="radio" name="gender" value="Muu"> Muu
-                  </form>
                 
-                    <div>
-                            <h1>Kieli</h1>
-                            <label> <input type="checkbox" checked="checked" name="sameadr">Suomi
-                                <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi
-                                </label>
 
-                    </div>
+                
 
+                <h1>Maa</h1>
+                <select>     
+                        <option value="Suomi">Suomi</option>
+                        <option value="Venäjä">Venäjä</option> 
+                        <option value="Ruotsi">Ruotsi</option> 
+                        <option value="Iso-britannia">Iso-britannia</option> 
+                </select>
+                <div class="form-group">
+                     <h1>Sukupuoli</h1>
+                     <input type="radio" name="gender" value="Mies" checked> Mies<br>
+                     <input type="radio" name="gender" value="Nainen"> Nainen<br>
+                     <input type="radio" name="gender" value="Muu"> Muu
+                
+                <h1>Kieli</h1>
+                <label> <input type="checkbox" checked="checked" name="sameadr">Suomi</label>
+                <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi</label>
                 </div>
                 
-                    <div class="container">
-                        <label for="lisätietoja"><b>lisätietoja:</b></label>
-                        <textarea id="lisätietoja" name="lisätietoja" placeholder="kirjoita jotain..." style="height:200px"></textarea>
+                
+                <div class="form-group">
+
+                      <label for="lisätietoja"><b>lisätietoja:</b></label>
+                      <textarea id="lisätietoja" name="lisätietoja" placeholder="kirjoita jotain..." style="height:200px"></textarea>
                 </div>
                         <p>kun teet käyttäjän sinä hyväksyt meidän termit. <a href="#"> Terms & Privacy </a></p>
                         <button type="submit" class="registerbtn">rekisteröidy nyt</button>
-                </div>
-                        <div class="container singin">
-                            
+                
+                <button type="submit" class="registerbtn">onko jo käyttäjä?</button>
+        </form>
+</div>  
 
-                            <button type="submit" class="registerbtn">onko jo käyttäjä?</button>
-                        </div>
-                        
+<script>
+function checkNimi(e){
 
-<head>
+        e.preventdefault();        
+        
+        var userId = document.getElementById('user_id').value;
+        var error = document.getElementsById ('nimi_error');
 
-        <link rel="stylesheet" href="java.css"
-</head>
+        if (userId.length < 2 ) {
+                error.innerHTML = "nimi on liian pieni"
+        } else {
+                error.innerHTML = "";
+        }
+}
 
-
+</script>
 
 </body>
-
-<style>
-body {
-  background-color: lightblue;
-}
-</style>
-
-
-
-
-
-
 
 
 </html>

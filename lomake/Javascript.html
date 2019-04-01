@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="java.css">
 </head>
 <body>
-        
+ 
 <div class="container">
 
         <h1>rekisteröinti</h1>
@@ -15,16 +15,16 @@
         <p> UUDEN KÄYTTÄJÄN LUOMINEN TÄHÄN </p>
         <hr>
         
-        <form onsubmit="checkNimi(event)">
+        <form onsubmit="checkLomake(event)" name="checkNimi(event)">
                 
                 <div class="form-group">
-                        <label for="sähköposti">sähköposti:</label>
+                        <label for="email">sähköposti:</label>
                         <input type="text" placeholder="sähköposti tähän" name="sähköposti" required>
                         <i class="fa fa-envelope icon"></i>
                 </div>
                 
                 <div class="form-group">
-                        <label for="käyttäjä ID"><b>Käyttäjä ID:</b></label>
+                        <label for="kayttaja ID"><b>Käyttäjä ID:</b></label>
                         <input type="text" placeholder="Käyttäjä ID" name="user_id" id="user_id" required>
                 </div>
                 
@@ -38,7 +38,7 @@
                 <div class="form-group"> 
                         <hr>
                         <label for="osoite"><b>osoite:</b></label>
-                        <input type="osoite" placeholder="osoite" name="osoite" required>
+                        <input type="osoite" placeholder="osoite" name="osoite" required> 
                 </div>
                 
 
@@ -76,19 +76,29 @@
 </div>  
 
 <script>
-function checkNimi(e){
-
-        e.preventdefault();        
+        function checkLomake (e) {
+                e.preventdefault
         
-        var userId = document.getElementById('user_id').value;
-        var error = document.getElementsById ('nimi_error');
+        var nimi=document.form['my-form']['email'].value;
+        tarkistaLomake (nimi);
 
-        if (userId.length < 2 ) {
-                error.innerHTML = "nimi on liian pieni"
-        } else {
-                error.innerHTML = "";
+
         }
-}
+        function checkNimi (text){
+                if (text ==""){
+                        return 'nimi ei voi olla tyhjä';
+                } else if  (text.length < 2){
+                        return 'nimi on liian lyhyt';
+                } else if (text.lenght > 10){
+                        return 'nimi on liian pitkä';
+                }
+
+                return "";
+        }
+
+
+        
+        
 
 </script>
 

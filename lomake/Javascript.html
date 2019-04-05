@@ -7,102 +7,138 @@
         <link rel="stylesheet" href="java.css">
 </head>
 <body>
- 
+
 <div class="container">
 
         <h1>rekisteröinti</h1>
 
         <p> UUDEN KÄYTTÄJÄN LUOMINEN TÄHÄN </p>
         <hr>
-        
-        <form onsubmit="checkLomake(event)" name="checkNimi(event)">
-                
+   
+
+        <form name="my-form" class="my-form" onsubmit="checkLomake(event)">
                 <div class="form-group">
                         <label for="email">sähköposti:</label>
-                        <input type="text" placeholder="sähköposti tähän" name="sähköposti" required>
+                        <input type="text" placeholder="sähköposti tähän" name="email" >
+                
                         <i class="fa fa-envelope icon"></i>
                 </div>
                 
                 <div class="form-group">
                         <label for="kayttaja ID"><b>Käyttäjä ID:</b></label>
-                        <input type="text" placeholder="Käyttäjä ID" name="user_id" id="user_id" required>
+                        <input type="text" placeholder="Käyttäjä ID" name="user_id" >
+                        <span id="id_error"></span>
                 </div>
                 
-               <div class="form-group">
-                <label for="psw"><b>salasana:</b></label>
-                <input type="password" placeholder="salasana tähän" name="salasana"required>
-                <label for="psw-repeat"><b>salasana uudestaan:</b></label>
-                <input type="password" placeholder="vahvista salasana" name="psw-repeat" required>
-                </div>
-                
+                <div class="form-group">
+                        <label for="psw"><b>salasana:</b></label>
+                        <input type="password" placeholder="salasana tähän" name="password">
+                        <span id ="ps_error"></span>
+                        <label for="psw-repeat"><b>salasana uudestaan:</b></label>
+                        <input type="password" placeholder="vahvista salasana" name="pswrepeat" >
+                        <span id = "salasana_error"></span>
+                </div>    
+
                 <div class="form-group"> 
                         <hr>
                         <label for="osoite"><b>osoite:</b></label>
-                        <input type="osoite" placeholder="osoite" name="osoite" required> 
+                        <input type="osoite" placeholder="osoite" name="osoite" > 
                 </div>
-                
 
-                
 
                 <h1>Maa</h1>
-                <select>     
-                        <option value="Suomi">Suomi</option>
-                        <option value="Venäjä">Venäjä</option> 
-                        <option value="Ruotsi">Ruotsi</option> 
-                        <option value="Iso-britannia">Iso-britannia</option> 
-                </select>
                 <div class="form-group">
-                     <h1>Sukupuoli</h1>
-                     <input type="radio" name="gender" value="Mies" checked> Mies<br>
-                     <input type="radio" name="gender" value="Nainen"> Nainen<br>
-                     <input type="radio" name="gender" value="Muu"> Muu
-                
-                <h1>Kieli</h1>
-                <label> <input type="checkbox" checked="checked" name="sameadr">Suomi</label>
-                <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi</label>
+                        <select>  
+                                <option value="">Valitse maa</option>   
+                                <option value="Suomi">Suomi</option>
+                                <option value="Venäjä">Venäjä</option> 
+                                <option value="Ruotsi">Ruotsi</option> 
+                                <option value="Iso-britannia">Iso-britannia</option> 
+                                
+                        </select>                
                 </div>
                 
-                
-                <div class="form-group">
 
-                      <label for="lisätietoja"><b>lisätietoja:</b></label>
-                      <textarea id="lisätietoja" name="lisätietoja" placeholder="kirjoita jotain..." style="height:200px"></textarea>
+                <div class="form-group">
+                        <h1>Sukupuoli</h1>
+                        <input type="radio" name="gender" value="Mies" checked> Mies<br>
+                        <input type="radio" name="gender" value="Nainen"> Nainen<br>
+                        <input type="radio" name="gender" value="Muu"> Muu<br>
+                        <span id = "gender_error"></span>
+                        
+                        <h1>Kieli</h1>
+                        <label> <input type="checkbox" checked="checked" name="sameadr">Suomi</label>
+                        <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi</label>
                 </div>
-                        <p>kun teet käyttäjän sinä hyväksyt meidän termit. <a href="#"> Terms & Privacy </a></p>
-                        <button type="submit" class="registerbtn">rekisteröidy nyt</button>
-                
+                        
+                        
+                <div class="form-group">
+                        <label for="lisätietoja"><b>lisätietoja:</b></label>
+                        <textarea id="lisätietoja" name="lisätietoja" placeholder="kirjoita jotain..." style="height:200px"></textarea>
+                </div>
+                <p>kun teet käyttäjän sinä hyväksyt meidän termit. <a href="#"> Terms & Privacy </a></p>
+                <button type="submit" class="registerbtn">rekisteröidy nyt</button>
+                        
                 <button type="submit" class="registerbtn">onko jo käyttäjä?</button>
         </form>
+
 </div>  
 
 <script>
-        function checkLomake (e) {
-                e.preventdefault
+
+function regexEmail (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+}
+
+function checkLomake (e) {
         
-        var nimi=document.form['my-form']['email'].value;
-        tarkistaLomake (nimi);
+        e.preventDefault(); // Keskeyttää lomakkeen lähetyksen (submit-eventin)
 
 
+        var email = document.forms['my-form']['email'].value;      
+        
+        var user_id = document.forms ['my-form']['user_id'].value;
+
+        var password = document.forms ['my-form']['password'].value;
+
+        var pswrepeat = document.forms ['my-form']['pswrepeat'].value;
+        
+        // sukupuoli javascript
+        var Mies = document.forms ['my-form ']['gender'].value; 
+        var Nainen = document.forms ['my-form']['gender'].value; 
+        var Muu = document.forms ['my-form']['gender'].value; 
+
+        
+                
+
+        // Käyttäjän id:n tarkistus
+        if (user_id.length < 3) {
+                document.getElementById('id_error').innerHTML = "Nimen pitää olla isompi";
+        } else {
+                document.getElementById('id_error').innerHTML = "";
         }
-        function checkNimi (text){
-                if (text ==""){
-                        return 'nimi ei voi olla tyhjä';
-                } else if  (text.length < 2){
-                        return 'nimi on liian lyhyt';
-                } else if (text.lenght > 10){
-                        return 'nimi on liian pitkä';
-                }
-
-                return "";
+              
+        // Salasanan pituus
+        if (password.length < 4)  {
+                document.getElementById('ps_error').innerHTML = "Salasanan pitää olla isompi";
+        } else {
+                document.getElementById('ps_error').innerHTML = "";
         }
 
-
-        
-        
+        // Salasana ja vahvistus on samat
+        if (password != pswrepeat){
+                document.getElementById('salasana_error').innerHTML = "Salasana ei täsmää";
+        }
+        else{}
+                document.getElementById('salasana_error').innerHTML ="";
+} 
 
 </script>
 
-</body>
+
+        </body>
 
 
-</html>
+
+        </html>

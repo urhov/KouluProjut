@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<e!DOCTYPE html>
 <html>
 <head>
         <meta charset="UTF-8">
@@ -16,14 +16,16 @@
         <hr>
    
 
-        <form name="my-form" class="my-form" onsubmit="checkLomake(event)">
+        <form name="my-form" class="my-form" onsubmit="checkLomake(event)"> 
                 <div class="form-group">
-                        <label for="email">sähköposti:</label>
-                        <input type="text" placeholder="sähköposti tähän" name="email" >
+                <label for="email">sähköposti:</label>
+                <input type="text" placeholder="sähköposti tähän" name="email" >
+                <span id="email_error"></span>
+                <i class="fa fa-envelope icon"></i>
+        </div>
+
                 
-                        <i class="fa fa-envelope icon"></i>
-                </div>
-                
+        
                 <div class="form-group">
                         <label for="kayttaja ID"><b>Käyttäjä ID:</b></label>
                         <input type="text" placeholder="Käyttäjä ID" name="user_id" >
@@ -33,16 +35,17 @@
                 <div class="form-group">
                         <label for="psw"><b>salasana:</b></label>
                         <input type="password" placeholder="salasana tähän" name="password">
-                        <span id ="ps_error"></span>
+                        <span id="ps_error"></span>
                         <label for="psw-repeat"><b>salasana uudestaan:</b></label>
                         <input type="password" placeholder="vahvista salasana" name="pswrepeat" >
-                        <span id = "salasana_error"></span>
+                        <span id="salasana_error"></span>
                 </div>    
 
                 <div class="form-group"> 
                         <hr>
                         <label for="osoite"><b>osoite:</b></label>
-                        <input type="osoite" placeholder="osoite" name="osoite" > 
+                        <input type="text" placeholder="osoite" name="osoite" > 
+                        <span id="osoite_error"></span>
                 </div>
 
 
@@ -58,17 +61,18 @@
                         </select>                
                 </div>
                 
-
                 <div class="form-group">
                         <h1>Sukupuoli</h1>
                         <input type="radio" name="gender" value="Mies" checked> Mies<br>
                         <input type="radio" name="gender" value="Nainen"> Nainen<br>
                         <input type="radio" name="gender" value="Muu"> Muu<br>
-                        <span id = "gender_error"></span>
+                       
                         
                         <h1>Kieli</h1>
-                        <label> <input type="checkbox" checked="checked" name="sameadr">Suomi</label>
-                        <label> <input type="checkbox" checked="checked" name="sameadr"> Muu kuin Suomi</label>
+                        <label><input type="checkbox" name="kieli">Suomi</label>
+                        <label><input type="checkbox" name="kieli">Ruotsi</label>
+                        <label> <input type="checkbox" name="kieli"> Muu kuin Suomi</label>
+                        <span id="error"></span>
                 </div>
                         
                         
@@ -81,6 +85,7 @@
                         
                 <button type="submit" class="registerbtn">onko jo käyttäjä?</button>
         </form>
+        
 
 </div>  
 
@@ -98,44 +103,85 @@ function checkLomake (e) {
 
         var email = document.forms['my-form']['email'].value;      
         
-        var user_id = document.forms ['my-form']['user_id'].value;
+        var user_id = document.forms['my-form']['user_id'].value;
 
-        var password = document.forms ['my-form']['password'].value;
+        var password = document.forms['my-form']['password'].value;
 
         var pswrepeat = document.forms ['my-form']['pswrepeat'].value;
-        
-        // sukupuoli javascript
-        var Mies = document.forms ['my-form ']['gender'].value; 
-        var Nainen = document.forms ['my-form']['gender'].value; 
-        var Muu = document.forms ['my-form']['gender'].value; 
 
         
-                
+        
+        // kieli javascript                                                                                        
+        
+        
+        var kieli = document.forms['my-form']['kieli'];
+
+        var valittu = 0;        
+
+        for (var i = 0; i<kieli.length; i++) {
+                console.log(kieli[i].checked);
+        
+                if (kieli[i].checked == true) {
+                        valittu++;  
+                }
+        }
+
+        
+               
+        if (valittu <= 0){
+                document.getElementById('error').innerHTML ="valitse joku";
+        }else {
+                document.getElementById('error').innerHTML = "";
+        }
+
+
 
         // Käyttäjän id:n tarkistus
         if (user_id.length < 3) {
                 document.getElementById('id_error').innerHTML = "Nimen pitää olla isompi";
-        } else {
+        }
+         else {
                 document.getElementById('id_error').innerHTML = "";
         }
               
         // Salasanan pituus
         if (password.length < 4)  {
                 document.getElementById('ps_error').innerHTML = "Salasanan pitää olla isompi";
-        } else {
+
+        }
+         else {
                 document.getElementById('ps_error').innerHTML = "";
         }
 
         // Salasana ja vahvistus on samat
         if (password != pswrepeat){
+
                 document.getElementById('salasana_error').innerHTML = "Salasana ei täsmää";
-        }
-        else{}
+        } 
+        else{
                 document.getElementById('salasana_error').innerHTML ="";
-} 
+        }
+
+                // email 
+                if (email.length < 2) {
+                        document.getElementById('email_error').innerHTML = "Sähköposti ei ole oikeanlainen";
+                }
+                 else {
+                        document.getElementById('email_error').innerHTML = "";
+                }
+
+
+}
+
+               // Osoite
+        if (Text.length < 2)  {
+                document.getElementById('osoite_error').innerHTML = "osoite on vääränlainen"
+        }
+         else {
+                document.getElementById('osoite_error').innerHTML = ""
+        }
 
 </script>
-
 
         </body>
 

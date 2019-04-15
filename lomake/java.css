@@ -27,10 +27,11 @@ body {
   width: 100%;
 }
 
-.form-group input {
+.form-group input[type="text"] {
   display: block;
   width: 100%;
 }
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
@@ -48,7 +49,11 @@ body {
   font-weight:500;
   
 }
-.form-group input, .form-group textarea, .form-group button {
+.form-group input[type="text"], 
+.form-group input[type="password"], 
+.form-group select, 
+.form-group textarea, 
+.form-group button {
   width: 100%;
   font-size: 1.2em;
   padding: 10px;

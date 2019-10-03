@@ -5,22 +5,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+<link href="Noppapeli.css">
 <title>Noppapeli</title>
 </head>
-
-    <body unload="update()">
-    <div class="Pelaajat"></div>
+    
+    <body onload="updateUi()">
     <h1>terve</h1>
-    <p id="numerot">
+    <div id="pelaajat">
+
+    </div>
+    <div id="htmlPisteet">
+
+    </div>
+        <p id="numerot">
     </p>
+
+
     <div class="pelaa">
     <button onclick="pelaaNappi()">pelaa</button>
     </div>
     <div class="vuoro">
     <button onclick="vuoronVaihto()">vuoronvaihto</button>
     </div>
-    <div>
+    <div class="Nopat">
         <img src="./Kuva/1.png" id="noppaKuva" alt="1 png">
     </div>
 

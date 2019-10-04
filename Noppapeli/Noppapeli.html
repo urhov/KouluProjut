@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="Noppapeli.css">
+<link rel="stylesheet" href="Noppapeli.css">
 <title>Noppapeli</title>
 </head>
     
@@ -14,18 +14,23 @@
     <div id="pelaajat">
 
     </div>
-    <div id="htmlPisteet">
-
+    
+    <div>
+        <p>Vuorossa: <span id="vuorossa"></span> pisteitä <span id="htmlPisteet"></span></p> 
     </div>
-        <p id="numerot">
-    </p>
+    
+    <div>
+        </p><p id="numerot"></p>
+    </div>
+    
 
 
     <div class="pelaa">
-    <button onclick="pelaaNappi()">pelaa</button>
+        <button onclick="pelaaNappi()">pelaa</button>
     </div>
+
     <div class="vuoro">
-    <button onclick="vuoronVaihto()">vuoronvaihto</button>
+        <button onclick="vuoronVaihto()">vuoronvaihto</button>
     </div>
     <div class="Nopat">
         <img src="./Kuva/1.png" id="noppaKuva" alt="1 png">

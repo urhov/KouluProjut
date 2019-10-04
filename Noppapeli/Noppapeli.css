@@ -1,5 +1,5 @@
-.nopat {
-    position: static;
-    max-width: 300px;
-    margin: 10px;
+body, html{
+    font-family: 'Courier New', Courier, monospace;
+
+    background-color: lightblue; 
 }

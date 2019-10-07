@@ -6,9 +6,9 @@ let pisteet = 0;
 
 var pelaajat = [
   { nimi : "Liisa", pisteet : 0 }, 
-  {nimi : "Keke", pisteet : 0 },
-  {nimi : "Sami", pisteet : 0 },
-  {nimi : "Emmi", pisteet : 0 }
+  { nimi : "Keke", pisteet : 0 },
+  { nimi : "Sami", pisteet : 0 },
+  { nimi : "Emmi", pisteet : 0 }
 ];
 
 var nopanHeitto = document.getElementById("noppa"); 
@@ -27,7 +27,7 @@ function updateUi(){
 
   document.getElementById("pelaajat").innerHTML = htmlPelaajat;
 
-  document.getElementById("vuorossa").innerHTML = vuoro = pelaajat[vuoro]; 
+  document.getElementById("vuorossa").innerHTML = pelaajat[vuoro].nimi; 
    
 }
   //näytä pisteet
@@ -44,33 +44,19 @@ function pelaaNappi() {
     document.getElementById("noppaKuva").src = "./Kuva/" + kuvat[x-1];
     pisteet = pisteet + x;
 }
-//  if (x = 1) {
-//     pisteet = pisteet * kerroin [1];
-//     updateUi();
-//  }
-//  else if (x = 2) {
-//   pisteet = pisteet * kerroin [2];
-//   updateUi();
-// }
-// else if (x = 3) {
-//   pisteet = pisteet * kerroin [3];
-//   updateUi();
-// }
-// else if (x = 4) {
-//   pisteet = pisteet * kerroin [4];
-//   updateUi();
-// }
-// else if (x = 5) {
-//   pisteet = pisteet * kerroin [5];
-//   updateUi();
-// }
-// else if (x = 6) {
-//   pisteet = pisteet * kerroin [6];
-//   updateUi();
-// }
+function vuoronVaihto(){
+  
+  pelaajat[vuoro].pisteet = pisteet;
+  
+  vuoro++;
+  if (vuoro >= pelaajat.length){
+    vuoro = 0;
+  }
+  updateUi();
+}
 
-
-
-
-
- 
+function tarkistaVoitto(){
+  if (pisteet >= 50){
+    alert() = "olet voittanut";g
+  }
+}

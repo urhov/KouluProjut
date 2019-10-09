@@ -1,6 +1,7 @@
 let kuvat = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
 let kerroin = [ ,1 ,2 ,3 ,4 ,5 ,6]; 
 let pisteet = 0;
+
 // var pelaajat = ["Liisa", "Keke", "Maija", "Matti"];
 // var pisteet = [0,67,0,0];
 
@@ -38,6 +39,7 @@ function updateUi(){
 
 
 function pelaaNappi() {
+  pelaaNappi = true;
     var x = Math.floor((Math.random() * 6) + 1);
     document.getElementById("numerot").innerHTML = x;
     document.getElementById("htmlPisteet").innerHTML = pisteet;
@@ -51,12 +53,9 @@ function vuoronVaihto(){
   vuoro++;
   if (vuoro >= pelaajat.length){
     vuoro = 0;
+    pisteet = 0;
   }
+    
   updateUi();
 }
 
-function tarkistaVoitto(){
-  if (pisteet >= 50){
-    alert() = "olet voittanut";g
-  }
-}

@@ -51,11 +51,35 @@ function pelaaNappi() {
     x = Math.floor((Math.random() * 6) + 1);
     f = Math.floor((Math.random() * 6) + 1);
    
-    
+    // Tuliko tuplat
+      // Oliko kaksi ykköstä 
+        // -> +25 pistettä
+      //  Jos ei kaksi ykköstä
+        // -> pisteet + 2xnopat
+    // Jos ei tuplia
+      // jos toinen on ykkönen
+        // vuoro vaihtuu
+      // Jos ei ykkösiä
+        // pisteet + nopat
+
+
     pisteet = pisteet + x + f;
     
-    if ("numerot"=1){
-
+    if (x == f){ // jos nopat ovat samaa lukua
+      if(x == 1){ // molemmat on ykkösiä
+        pisteet = pisteet + 25; 
+      } else {
+        pisteet = pisteet + (x + f)* 2;       
+      }
+    } else { // nopat on eri lukuja
+      if (x == 1 || f == 1) {
+       // vuoron vaihto
+        vuoronVaihto()
+        pisteet = 0; 
+        updateUi();
+      } else {
+        // pisteet
+      }
     }
     
     updateUi();
@@ -66,9 +90,9 @@ function pelaaNappi() {
 function vuoronVaihto(){
   pelaajat[vuoro].pisteet = pisteet;
   vuoro++;
+  pisteet = 0;
   if (vuoro >= pelaajat.length){
     vuoro = 0;
-    pisteet = 0;
   } 
   updateUi();
 }

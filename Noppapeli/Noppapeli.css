@@ -2,4 +2,9 @@ body, html{
     font-family: 'Courier New', Courier, monospace;
 
     background-color: lightblue; 
+   
+    
+}
+.Nopat{
+  max-width: 100px;  
 }

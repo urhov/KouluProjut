@@ -6,6 +6,20 @@ let pisteet = 0;
 // var vuoronVaihto = false; 
 // var pelaajat = ["Liisa", "Keke", "Maija", "Matti"];
 // var pisteet = [0,67,0,0];
+//span, joka sulkee modalin 
+var span = document.getElementsByClassName("close")[0];
+
+// kun käyttäjä painaa nappia 
+function showModal(elemId){
+    document.getElementById(elemId).style.display = "block";
+
+
+}
+function closeModal(elem){ 
+    elem.parentElement.parentElement.style.display = "none"
+}
+
+
 
 var pelaajat = [
   { nimi : "Liisa", pisteet : 0 }, 
@@ -63,7 +77,7 @@ function pelaaNappi() {
         // pisteet + nopat
 
 
-    pisteet = pisteet + x + f;
+
     
     if (x == f){ // jos nopat ovat samaa lukua
       if(x == 1){ // molemmat on ykkösiä
@@ -74,11 +88,13 @@ function pelaaNappi() {
     } else { // nopat on eri lukuja
       if (x == 1 || f == 1) {
        // vuoron vaihto
-        vuoronVaihto()
-        pisteet = 0; 
+        pisteet = 0;       
         updateUi();
+        vuoronVaihto();
+         showModal('vaihtoModal');
       } else {
         // pisteet
+        pisteet = pisteet + x + f;
       }
     }
     
@@ -88,7 +104,7 @@ function pelaaNappi() {
 }
 
 function vuoronVaihto(){
-  pelaajat[vuoro].pisteet = pisteet;
+  pelaajat[vuoro].pisteet += pisteet;
   vuoro++;
   pisteet = 0;
   if (vuoro >= pelaajat.length){
@@ -96,4 +112,15 @@ function vuoronVaihto(){
   } 
   updateUi();
 }
+
+function tarkistaVoitto(){
+  if (pelaajat[vuoro].pisteet <= 100){
+    updateUi();
+    showModal('voititModal');
+  }
+}
+
+
+
+
 

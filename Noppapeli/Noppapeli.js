@@ -6,19 +6,24 @@ let pisteet = 0;
 // var vuoronVaihto = false; 
 // var pelaajat = ["Liisa", "Keke", "Maija", "Matti"];
 // var pisteet = [0,67,0,0];
-//span, joka sulkee modalin 
-var span = document.getElementsByClassName("close")[0];
 
-// kun käyttäjä painaa nappia 
+var span = document.getElementsByClassName("close")[0];
+var voititModal = document.getElementById("voititModal");
+var vaihtoModal = document.getElementById("vaihtoModal");
+
+
 function showModal(elemId){
-    document.getElementById(elemId).style.display = "block";
+  document.getElementById(elemId).style.display = "block";
 
 
 }
 function closeModal(elem){ 
-    elem.parentElement.parentElement.style.display = "none"
+  elem.parentElement.parentElement.style.display = "none";
 }
 
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
 
 var pelaajat = [
@@ -58,10 +63,7 @@ function updateUi(){
     
   // Näytä pelaajat
 
-
-
 function pelaaNappi() {
-    
     x = Math.floor((Math.random() * 6) + 1);
     f = Math.floor((Math.random() * 6) + 1);
    
@@ -91,7 +93,7 @@ function pelaaNappi() {
         pisteet = 0;       
         updateUi();
         vuoronVaihto();
-         showModal('vaihtoModal');
+        showModal("vaihtoModaali");
       } else {
         // pisteet
         pisteet = pisteet + x + f;
@@ -107,6 +109,8 @@ function vuoronVaihto(){
   pelaajat[vuoro].pisteet += pisteet;
   vuoro++;
   pisteet = 0;
+  updateUi();
+  showModal("vaihtoModaali");
   if (vuoro >= pelaajat.length){
     vuoro = 0;
   } 
@@ -116,7 +120,7 @@ function vuoronVaihto(){
 function tarkistaVoitto(){
   if (pelaajat[vuoro].pisteet <= 100){
     updateUi();
-    showModal('voititModal');
+    showModal("voititModaali");
   }
 }
 

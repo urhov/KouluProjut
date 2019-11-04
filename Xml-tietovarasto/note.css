@@ -1,3 +1,14 @@
+html {
+    background: lightblue;
+}
+btn {
+    color: cyan; 
+    background-color:cadetblue; 
+    margin: 6px;
+        
+}
+
+
 elokuvakirjasto {
     background-color: lightblue;
     color: lightgray;
@@ -8,3 +19,4 @@ elokuva {
     font-size: 100%;
     font-family: 'Courier New', Courier, monospace;
 }
+

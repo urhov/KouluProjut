@@ -6,21 +6,21 @@
         <ohjaaja>Stanley Kubrick</ohjaaja>
         <julkaisuvuosi> 26. syyskuuta 1980 </julkaisuvuosi>
         <genre> kauhu </genre>
-        <ikäraja>16</ikäraja>
+        <ikäraja>k16</ikäraja>
     </elokuva>
     <elokuva>
         <nimi> Cast away</nimi>
         <ohjaaja>Robert Zemeckis</ohjaaja>
         <julkaisuvuosi> 26. tammikuuta 2001</julkaisuvuosi>
         <genre>draama</genre>
-        <ikäraja>7</ikäraja>
+        <ikäraja>k12</ikäraja>
     </elokuva>
     <elokuva>
         <nimi>scarface</nimi>
         <ohjaaja>Brian De Palma</ohjaaja>
         <julkaisuvuosi>9. maaliskuuta 1984</julkaisuvuosi>
         <genre>toiminta</genre>
-        <ikäraja>18</ikäraja>
+        <ikäraja>k18</ikäraja>
     </elokuva>
 </elokuvakirjasto>
 

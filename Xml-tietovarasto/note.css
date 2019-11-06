@@ -1,13 +1,22 @@
 html {
     background: lightblue;
+    position: absolute;
+    max-width: 500px;
+    top: 35%; 
+    left:35%;
 }
-btn {
+ btn {
     color: cyan; 
     background-color:cadetblue; 
     margin: 6px;
+    border: 1px black;
         
 }
 
+table {
+    border: 2px solid black;
+    border-collapse: initial;
+}
 
 elokuvakirjasto {
     background-color: lightblue;

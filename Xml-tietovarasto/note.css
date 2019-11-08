@@ -1,21 +1,28 @@
 html {
-    background: lightblue;
+    background-color: lightslategrey;
     position: absolute;
     max-width: 500px;
-    top: 35%; 
-    left:35%;
+    top: 43%; 
+    left: 43%;
 }
- btn {
-    color: cyan; 
-    background-color:cadetblue; 
-    margin: 6px;
-    border: 1px black;
-        
+ button {
+    padding: 6px 25px; 
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    outline: black;
+    color:  white;
+    background-color: lightgrey;
+    border: 6px;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
 }
 
 table {
     border: 2px solid black;
     border-collapse: initial;
+    padding: 6px;
+    background-color: lightgreen;
 }
 
 elokuvakirjasto {

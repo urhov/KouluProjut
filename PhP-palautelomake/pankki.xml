@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="XSLT.xsl"?>
-<nimimerkki></nimimerkki>
-<sähköposti></sähköposti>
-<salasana></salasana>
-
+<data>
+  <user>
+    <nimimerkki>jaska</nimimerkki>
+    <sähköposti>jaska@mail.com</sähköposti>
+    <salasana>asdfasdf</salasana>
+    <sukupuoli>mies</sukupuoli>
+  </user>
+  <user>
+    <nimimerkki>Keijo</nimimerkki>
+    <sähköposti>tuomas@mail.com</sähköposti>
+    <salasana>qwerty</salasana>
+    <sukupuoli>mies</sukupuoli>
+  </user>
+</data>

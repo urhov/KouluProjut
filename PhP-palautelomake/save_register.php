@@ -1,21 +1,35 @@
 <?php 
-    $name = $_POST['nimimerkki']; 
-    if ( strlen($name) > 12) {
-        echo "nimi on liian pitkä";
-    } 
-?>
-<?php 
-$e = $_POST['sahkoposti'];
-if (strlen($mail) >20)
-    echo "sähköposti on liian pitkä";
-?>
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["nimimerkki"])) {
+            $nameErr = "Nimeä pyydetään"; 
+        } else {
+            $name_id = test_input($_POST["name_id"]);
+        }
+        if (empty($_POST["sahkoposti"])) {
+            $mailErr = "Nimeä pyydetään"; 
+        } else {
+            $mail_id = test_input($_POST["sahkoposti"]);
+        }
+        if (empty($_POST["salasana"])) {
+            $passwordErr = "Nimeä pyydetään"; 
+        } else {
+            $psword_id = test_input($_POST["salasana"]);
+        }
+        if (empty($_POST["salasana uudestaan"])) {
+            $pswordErr = "Nimeä pyydetään"; 
+        } else {
+            $psword_id = test_input($_POST["salasana uudestaan"]);
+        }
+    }
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+   
+  
 
-<?php 
-$s = $_POST['salasana'];
-if (strlen($psword) > 14)
-    echo "salasana on liian pitkä"; 
-?>
-<?php
 $xml = simplexml_load_file('pankki.xml');
 
 $new_user = $xml->addChild('user');
@@ -31,6 +45,19 @@ $new_user->addChild('sukupuoli', 'mies');
     $dom->formatOutput = true; 
     $dom->loadXML($xml->asXML()); 
     $dom->save('pankki.xml')
+    ?>
+<?php
+if (new DOMdocument("1.0")) {
+    echo "Tietosi on tallennettu";
+}
 ?>
-
+<?php
+echo "<h2>Tallennetut tietosi</h2>"; 
+echo nimi;
+echo "<br>";
+echo "sahkoposti";
+echo "<br>";
+echo "sukupuoli";
+echo "<br>";
+?>
 

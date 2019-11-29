@@ -68,8 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dom->preserveWhiteSpace = false; 
     $dom->formatOutput = true; 
     $dom->loadXML($xml->asXML()); 
-    $dom->save('pankki.xml');
-    
+    $dom->save('pankki.xml'); 
 }
 ?>
 
@@ -126,7 +125,6 @@ $headers .= 'content-Type: Type/html; charset=UTF-8;';
    echo "tämä on lähetetty php:llä";
 
 ?>
-    
 
 </body>
 </html>

@@ -58,5 +58,13 @@
   $people = array('Brad' => 35);
 
   print_r($people);
+
+
+  $cars = array(
+    array('subaru', 20, 10)
+    array('toyota', 32, 12)
+    array('mitsubishi', 22, 12)
+
+  );
     ?>
  

@@ -1,58 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="XSLT.xsl"?>
 <data>
-  <user>
-    <nimimerkki>eRKKI</nimimerkki>
-    <sähköposti>erkki@mail.com</sähköposti>
-    <salasana>$2y$10$R/4B5uj1jDSJiL3bMUcVzukMYQ2xHKNH7ho1ly3hfve/tUDV.KFSG</salasana>
-    <sukupuoli>mies</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$pZXmaMyS9QJHvGtUe6igD.g3OZZj7JWmQdNFcpa.K7I4b08f6xiaK</salasana>
-    <sukupuoli>nainen</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$yEP0CFB30dm/vy2Lq3EiV.4avDLvP1pUl..5j0bZb2cP8xsa1yHlC</salasana>
-    <sukupuoli>nainen</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$iDiiERRX5LQxesNKpkrWee7Y.z8MpCYh7pwZGsGWXRoTBpGZBsNi.</salasana>
-    <sukupuoli>nainen</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$cJ2/rIrZTfyAzft/B6McZO4hWgjp7R9ee6IveW8cv/.DX7K4uuitC</salasana>
-    <sukupuoli>nainen</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$1/keSTQRu9U1nhZ9ZpWlq.UZZXxXkwXxPYa7DFERoxS01itGa4Cgy</salasana>
-    <sukupuoli>nainen</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>nimi@email.com</sähköposti>
-    <salasana>$2y$10$TiY6HGL3HCD5WWw2gBOa/ehERCXc/8nepY2/xlPLl.FrI13EyKl5G</salasana>
-    <sukupuoli>mies</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$Wt3XhA8XKyVAMDjjUL6ngeMO92LwZUDg.aPmzokVwdxVrrXdjrHay</salasana>
-    <sukupuoli>mies</sukupuoli>
-  </user>
-  <user>
-    <nimimerkki>Tuomas</nimimerkki>
-    <sähköposti>urkki2@gmail.com</sähköposti>
-    <salasana>$2y$10$celUvvhF1XNMQNWBav3Cjuliaoz9fgaKw2.vugqQbHEljtrM5PiYq</salasana>
-    <sukupuoli>mies</sukupuoli>
-  </user>
+
 </data>

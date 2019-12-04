@@ -10,8 +10,11 @@
 </head> 
 <body>
 
-
+ <li>
+ <a href="kommenttisivu.php">kommentti osioon </a> 
+ </li>
 <?php 
+
 
 function test_input($data) {
     $data = trim($data);
@@ -20,12 +23,12 @@ function test_input($data) {
     return $data;
 }
 
-$nameErr = $emailErr = $passwordErr = $sukupuoliErr = "";
+$nameErr = $emailErr = $passwordErr = $sukupuoliErr = $commentErr = "";
 $name = "";
 $email = "";
 $password = ""; 
 $sukupuoli = "";
-
+$comment = "";
 // Tarkistaa onko tultu lomakkeen kautta
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -48,6 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = test_input($_POST["salasana"]);
         $password = password_hash("salasana", PASSWORD_DEFAULT);
     }
+    if (empty($_POST["comment"])) {
+        $commentErr = "* Kommentoi!";
+    } else {
+        $comment = test_input($_POST["comment"]);   
+    }
     
     if (empty($_POST["sukupuoli"])) {
         $sukupuoli = "* mikä on sukupuolesi?";
@@ -62,13 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_user->addChild('sähköposti', $email);
     $new_user->addChild('salasana', $password);
     $new_user->addChild('sukupuoli', $sukupuoli);
-
+    $new_user->addChild('comment', $comment);
+ 
+    
     // tallennus 
     $dom = new DOMdocument("1.0");
     $dom->preserveWhiteSpace = false; 
     $dom->formatOutput = true; 
     $dom->loadXML($xml->asXML()); 
-    $dom->save('pankki.xml'); 
+    echo date('h:i:sa d/m/Y');  
 }
 ?>
 
@@ -78,24 +88,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div id="name_id">
         <br>
-        <label for="name">nimimerkki:</label>
-        <input type="text" placeholder="nimi tähän" name="nimi">
+       <br><label for="name">nimimerkki:</label><br>
+        <br><input type="text" placeholder="nimi tähän" name="nimi"><br>
         <span><?php echo $nameErr?></span>
     </div>
     
     <div id="mail_id">
         <br>
-        <label for="email">sähköposti:</label>
-        <input type="email" placeholder="sähköposti tähän" name="email">
+       <br><label for="email">sähköposti:</label><br>
+       <br><input type="email" placeholder="sähköposti tähän" name="email"><br>
         <span><?php echo $emailErr;?></span>
     </div>
 
     <div id="pswd_id">
         <br>
-        <label for="password">salasana:</label>
-        <input type="password" placeholder="salasana tähän" name="salasana">
+       <br> <label for="password">salasana:</label><br>
+      <br>  <input type="password" placeholder="salasana tähän" name="salasana"><br>
         <span><?php echo $passwordErr;?></span>
     </div>
+    <div class="kommentti">
+    <br><label for="comment">kommentoi:</label><br>
+    <textarea name="text" rows="5" cols="15"></textarea>
+    <span><?php echo $commentErr?></span>
+    </div>
+    
 
     <div id="sukupuoli_id">
         <input type="radio" name="sukupuoli" value="mies">mies  
@@ -104,7 +120,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        <span><?php echo $sukupuoliErr;?></span>
     </div>
     <button type="submit" class="registerbtn">rekisteröidy</button>
-</form>
+
+    
+ </form>
 <div id="tietosi">
      nimi :        <?php echo $name;?>  
     <br>
@@ -112,19 +130,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
   sukupuoli :      <?php echo $sukupuoli;?> 
     <br>
-  
+  kommentti :        <?php echo $comment;?>
 </div>
  
 <?php 
 $to_email = 'urkki2@gmail.com';
-$subject = 'testi';
-$message = 'tämä lähtee phpllä.';
+$subject = 'palaute varmistus';
+$message = 'kiitos palautteesta!!!';
 $headers = 'From: urkki2@gmail.com; \r\n;';
-$headers .= 'content-Type: Type/html; charset=UTF-8;'; 
-   mail($to_email, $subject, $message, $headers);
-   echo "tämä on lähetetty php:llä";
+$headers .= 'content-Type: Type/html; charset= UTF-8;'; 
 
-?>
+  mail($to_email, $subject, $message, $headers);
+    
+?> 
 
 </body>
 </html>

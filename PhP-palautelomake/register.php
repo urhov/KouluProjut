@@ -11,7 +11,7 @@
 <body>
 
  <li>
- <a href="kommenttisivu.php">kommentti osioon </a> 
+ <a href="pankki.xml">kommentti osioon</a> 
  </li>
 <?php 
 
@@ -70,7 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_user->addChild('sähköposti', $email);
     $new_user->addChild('salasana', $password);
     $new_user->addChild('sukupuoli', $sukupuoli);
-    $new_user->addChild('comment', $comment);
+    $new_user->addChild('kommentti', $comment);
+    $new_user->addChild('pvm', date('h:i:sa d/m/Y'));
  
     
     // tallennus 
@@ -78,6 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dom->preserveWhiteSpace = false; 
     $dom->formatOutput = true; 
     $dom->loadXML($xml->asXML()); 
+    $dom->save('pankki.xml');
+
     echo date('h:i:sa d/m/Y');  
 }
 ?>
@@ -86,21 +89,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 
-    <div id="name_id">
+    <div class="name_id">
         <br>
        <br><label for="name">nimimerkki:</label><br>
         <br><input type="text" placeholder="nimi tähän" name="nimi"><br>
         <span><?php echo $nameErr?></span>
     </div>
     
-    <div id="mail_id">
+    <div class="mail_id">
         <br>
        <br><label for="email">sähköposti:</label><br>
        <br><input type="email" placeholder="sähköposti tähän" name="email"><br>
         <span><?php echo $emailErr;?></span>
     </div>
 
-    <div id="pswd_id">
+    <div class="pswd_id">
         <br>
        <br> <label for="password">salasana:</label><br>
       <br>  <input type="password" placeholder="salasana tähän" name="salasana"><br>
@@ -108,12 +111,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <div class="kommentti">
     <br><label for="comment">kommentoi:</label><br>
-    <textarea name="text" rows="5" cols="15"></textarea>
+    <textarea name="comment" rows="5" cols="15"></textarea>
     <span><?php echo $commentErr?></span>
     </div>
     
 
-    <div id="sukupuoli_id">
+    <div class="sukupuoli_id">
         <input type="radio" name="sukupuoli" value="mies">mies  
         <input type="radio" name="sukupuoli" value="nainen">nainen   
         <input type="radio" name="sukupuoli" value="muu">muu   

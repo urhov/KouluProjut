@@ -2,6 +2,7 @@ body {
   background-image: url('../img/background.jpg');
   background-repeat: no-repeat;
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ box-sizing: border-box;
 }
 
   .registerbtn {  
@@ -19,4 +20,47 @@ body {
     border: 6px;
     border-radius: 16px;
     box-shadow: 0 9px #999;
+ }
+ .name_id {
+  width: 98%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 0 9px #999;
+ }
+
+ .mail_id {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 8px 0; 
+   border: 1px solid #ccc;
+   border-radius: 25px;
+   box-shadow: 0 9px #999;
+ }
+
+ .pswd_id {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 9px #999;
+ }
+
+ .kommentti {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 9px #999;
+ }
+ .sukupuoli_id {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 9px #999;
  }

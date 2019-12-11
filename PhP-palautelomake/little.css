@@ -22,45 +22,73 @@ body {
     box-shadow: 0 9px #999;
  }
  .name_id {
-  width: 98%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  width: 90%;
+    padding: 10px 25px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    background-color: lightblue;
+    border-radius: 25px;
+ }
+ input[type=text] {
+  width: 30%;
   border: 1px solid #ccc;
-  border-radius: 25px;
-  box-shadow: 0 9px #999;
+  padding: 10px; 
+  margin: 10px auto; 
  }
 
  .mail_id {
-   width: 100%;
-   padding: 12px 20px;
-   margin: 8px 0; 
-   border: 1px solid #ccc;
-   border-radius: 25px;
-   box-shadow: 0 9px #999;
+  width: 90%;
+  padding: 10px 25px;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  background-color: lightblue;
+  border-radius: 25px;
+ }
+ input[type=email] {
+  width: 30%;
+  border: 1px solid #ccc;
+  padding: 10px; 
+  margin: 10px auto; 
+
  }
 
  .pswd_id {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  width: 90%;
+  padding: 10px 25px;
+  margin: 10px auto;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 9px #999;
+  background-color: lightblue;
+  border-radius: 25px;
+ }
+ input[type=password] {
+  width: 30%;
+  border: 1px solid #ccc;
+  padding: 10px; 
+  margin: 10px auto; 
  }
 
+
  .kommentti {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 9px #999;
+  width: 90%;
+    padding: 10px 25px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    background-color: lightblue;
+    border-radius: 25px;
+ }
+ textarea[name=comment] {
+   width: 30%;
+    border: 1px solid #ccc;
+    padding: 10px; 
+    margin: 10px auto; 
+
  }
  .sukupuoli_id {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  width: 90%;
+  border: 1px solid black;
+  padding: 10px 25px;
+  margin: 10px auto;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 9px #999;
+  background-color: lightblue;
+  border-radius: 25px;
  }

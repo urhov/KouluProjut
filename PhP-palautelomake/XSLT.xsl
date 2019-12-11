@@ -11,9 +11,9 @@
                 
                 <xsl:for-each select="data/user">
                     <div class="kortti">
-                    <h1>
+                    <p>
                     <xsl:value-of select="nimimerkki"/>
-                    </h1>
+                    </p>
                         <p>
                             <xsl:value-of select="kommentti" />
                         </p>

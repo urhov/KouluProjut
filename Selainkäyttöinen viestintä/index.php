@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="note.css">
-    <title>Document</title>
+    <title>SelainKäyttöinen</title>
 </head>
 <body>
-    <button id="btn" onclick="parseData()">Parse</button>
 
-    <table id="xml_txt"></table>
+    <p></p>
 
-    <script src="parser.js"></script>
+   <div class="background"></div> 
+
 </body>
 </html>

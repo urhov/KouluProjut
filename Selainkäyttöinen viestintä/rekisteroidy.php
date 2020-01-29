@@ -20,28 +20,34 @@
                 <h1>rekisteröidy</h1>
             <li class="active"><a href="index.php">kommenttisivusto</li>
             <li><a href="kirjaudu.php">kirjaudu</a></li>
-            <li><a href="rekisteroidy.php">rekisterödy</a></li>
+            <li><a href="rekisteroidy.php">rekisteröidy</a></li>
             </ul>
         </div>
     </nav>        
 </div>
-
+<div class="container">
+<form action="add_account.php" method="get">
 <div class="name">
-<br><label for="nimi">nimi</label>
-<br><input type="text" placeholder="Nimi tähän" name="nimi">
+        <br><label for="nimi">nimi</label>
+        <br><input type="text" placeholder="Nimi tähän" name="username">
+    </div>
+    <div class="email">
+        <br><label for="email">sähköposti</label>
+        <br><input type="email" placeholder="sähköposti tähän" name="email">
+    </div>
+    <div class="password">
+        <br><label for="salasana">salasana</label>
+        <br><input type="password" placeholder="salasana tähän" name="passwd">
+    </div>
+    <button type="submit" class="register-btn">rekisteröidy</button>
 </div>
-<div class="email">
-<br><label for="email">sähköposti</label>
-<br><input type="email" placeholder="sähköposti tähän" name="sähköposti">
-</div>
-<div class="password">
-<br><label for="salasana">salasana</label>
-<br><input type="password" placeholder="salasana tähän" name="salasana">
-</div>
 
 
 
 
+
+</form>
+    
 
 
 </body>

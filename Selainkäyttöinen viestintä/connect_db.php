@@ -22,4 +22,5 @@ if (!$conn->set_charset("utf8")) {
     $errors[] = "Current character set: " . $conn->character_set_name();
 }
 
-echo "<script>console.log('Connected successfully')</script>";
+
+

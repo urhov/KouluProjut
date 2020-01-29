@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SelainKäyttöinen</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css  ">
     <!--link rel="stylesheet" href="index.css"-->
 </head>
 <body>
@@ -29,7 +28,7 @@
 <div class="container">
     <div class="row">
             <h2>Lisää kommentti</h2>
-        </div>
+     </div>
         <div class="row">
             <form action="add_comment.php" method="get">
                 <div class="form-group">
@@ -37,26 +36,38 @@
                     <textarea name="comment" cols="30" rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-danger">lähetä</button>
-            </form>
+                </form>                
+
         </div>
     </div>
 </div>
-<div class="comments">
+<div class="comment">
 <h2>kommentit</h2>
+
+<?php 
+// avaa tietokantayhteys
+include "connect_db.php";
+// tee sql-kysely
+$sql = "INSERT INTO kommentit (kommentti) VALUES ('{$_GET['comment']}');";
+// suorita kysely
+$sql = "SELECT id, kommentti";
+$result = $conn->query($sql);
+// jos tuloksia näytä ne loopissa
+while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["kommentti"]. " ";
+    }
+ else {
+    echo "0 results";
+}
+$conn->close();
+?>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-=======
-</head>
-<body>
-
-    <p></p>
-
-   <div class="background"></div> 
->>>>>>> 0533d265f907a929095c9fc51d8c0742bf94a96a
 
 </body>
 </html>

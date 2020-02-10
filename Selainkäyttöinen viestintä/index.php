@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SelainKäyttöinen</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="index.css  ">
+    <link rel="stylesheet" href="index.css">
     <!--link rel="stylesheet" href="index.css"-->
 </head>
 <body>
@@ -20,7 +23,7 @@
                 <h1>kommenttisivu</h1>
             <li class="active"><a href="index.php">kommenttisivusto</li>
             <li><a href="kirjaudu.php">kirjaudu</a></li>
-            <li><a href="rekisteroidy.php">rekisterödy</a></li>
+            <li><a href="rekisteroidy.php">rekisteröidy</a></li>
             </ul>
         </div>
     </nav>        
@@ -37,27 +40,23 @@
                 </div>
                 <button type="submit" class="btn btn-danger">lähetä</button>
                 </form>                
-
         </div>
     </div>
 </div>
-<div class="comment">
+<div id="comment">
 <h2>kommentit</h2>
 
 <?php 
 // avaa tietokantayhteys
 include "connect_db.php";
+
 // tee sql-kysely
-$sql = "INSERT INTO kommentit (kommentti) VALUES ('{$_GET['comment']}');";
 // suorita kysely
-$sql = "SELECT id, kommentti";
+$sql = "SELECT id, kommentti FROM kommentit";
 $result = $conn->query($sql);
 // jos tuloksia näytä ne loopissa
-while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["kommentti"]. " ";
-    }
- else {
-    echo "0 results";
+while($row = $result->fetch_assoc()){
+ echo "id:" . $row["id"] .  $row["kommentti"]. "<br>";
 }
 $conn->close();
 ?>

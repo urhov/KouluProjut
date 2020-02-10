@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+// Tarkista tullaanko lomakkeelta
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    include "connect_db.php";
+    // Hae tietokannasta käyttäjä jonka käyttäjänimi on sama kuin lomakkeelta annettu
+    $sql = "SELECT username, users FROM user_name";
+    if (" ")
+        echo "username";
+    // Jos käyttäjänimi löytyy, tarkistetaan salasana
+    $sql = "SELECT username, users FROM pwd";
+    // Jos salasana natsaa, käyttäjä päästetään sisään
+
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,21 +46,19 @@
 <div class="container">
     <div class="signin">
         <div class="row">
-        <form action="">
+            <form method="post" action="kirjaudu.php">
+                
                 <label type="text" for="user">Käyttäjänimi:</label>
-                <input type="text" name="comment">    
-            </div>
-        </form>  
-
-<div class="container">
-    <div class="password">
-        <div class="row">
-        <form action="">
+                <input type="text" name="username">    
+                <br>
                 <label type="password" for="password">salasana:</label>
                 <input type="password" name="password">    
-            </div>
-        </form> 
+        
+                </br><button type="submit" class="login-btn">kirjaudu</button><br>
+            </form> 
+        </div>
     </div>
 </div>
+
 </body>
 </html>

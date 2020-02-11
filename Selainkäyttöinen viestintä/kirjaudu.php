@@ -14,7 +14,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
     // Jos käyttäjänimi löytyy, tarkistetaan salasana
     $sql = "SELECT passwd, users FROM pwd";
-   
+   if ("")
+   else {
+       echo "jotain meni pieleen"; 
+   }
+
     // Jos salasana natsaa, käyttäjä päästetään sisään
 
 }

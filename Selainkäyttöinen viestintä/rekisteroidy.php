@@ -28,7 +28,7 @@
 <div class="container">
 <form action="add_account.php" method="get">
 <div class="name">
-        <br><label for="nimi">nimi</label>
+        <br><label for="nimi">käyttäjänimi</label>
         <br><input type="text" placeholder="Nimi tähän" name="username">
     </div>
     <div class="email">
@@ -41,11 +41,7 @@
     </div>
     <button type="submit" class="register-btn">rekisteröidy</button>
 </div>
-
-
-
-
-
+  
 </form>
     
 

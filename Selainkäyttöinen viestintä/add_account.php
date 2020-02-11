@@ -13,9 +13,11 @@
 <?php
 include_once 'connect_db.php';
 
-$username = $_GET['user_name'];
+$username = $_GET['username'];
 $email = $_GET['email'];
 $passwd = $_GET['passwd'];
+
+$passwd = password_hash ( $passwd , PASSWORD_DEFAULT);
 
 $stmt = $conn->prepare("INSERT INTO users (user_name, email, pwd) VALUES (?,?,?);");
 $stmt->bind_param("sss", $username, $email, $passwd);
@@ -23,7 +25,7 @@ $stmt->bind_param("sss", $username, $email, $passwd);
 if ($stmt->execute()) {
     echo "Käyttäjä luotu";
 } else {
-    echo "kirjautumisen kanssa tuli ongelma" . $sql . "<br>" . $conn->error;
+        echo "kirjautumisen kanssa tuli ongelma" . "<br>" . $conn->error;
 }
 
 $conn->close();

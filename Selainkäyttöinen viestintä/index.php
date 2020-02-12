@@ -45,7 +45,7 @@ session_start();
 </div>
 <div id="comment">
 <h2>kommentit</h2>
-
+<a href="sdsds"></a>
 <?php 
 // avaa tietokantayhteys
 include "connect_db.php";

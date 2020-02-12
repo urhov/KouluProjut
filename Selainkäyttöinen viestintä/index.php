@@ -56,7 +56,7 @@ $sql = "SELECT id, kommentti FROM kommentit";
 $result = $conn->query($sql);
 // jos tuloksia näytä ne loopissa
 while($row = $result->fetch_assoc()){
- echo "id:" . $row["id"] .  $row["kommentti"]. "<br>";
+ echo $username . $row["id"] .  $row["kommentti"]. "<br>";
 }
 $conn->close();
 ?>

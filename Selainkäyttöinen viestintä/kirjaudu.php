@@ -2,28 +2,34 @@
 session_start();
 
 
+
 // Tarkista tullaanko lomakkeelta
-if (isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['passwd'])) {
+    
+    $username = $_POST['username'];
+    $passwd = $_POST['passwd'];
+    
     include "connect_db.php";
+
     // Hae tietokannasta käyttäjä jonka käyttäjänimi on sama kuin lomakkeelta annettu
-    $sql = "SELECT username, users FROM user_name";
-    if ("username = user_name")
-        echo "username";
-        else {
-            echo "jotain meni pieleen"; 
-        }
+
+    $stmt = $conn->prepare("SELECT user_name, email, pwd FROM users WHERE user_name = ?;");
+    $stmt->bind_param("s", $username);
+
+    $stmt->execute();
+    
+    // bindaus
+    $stmt->bind_result($username, $email , $passwd);
+    
+    while ($stmt->fetch()) {
+        printf("%s %s\n", $username, $passwd);
+    }
     // Jos käyttäjänimi löytyy, tarkistetaan salasana
-    $sql = "SELECT passwd, users FROM pwd";
-   if ("")
-   else {
-       echo "jotain meni pieleen"; 
-   }
+    
 
+                
     // Jos salasana natsaa, käyttäjä päästetään sisään
-
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +61,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <div class="container">
     <div class="signin">
         <div class="row">
-            <form method="post" action="add_account.php">
+            <form method="post" action="kirjaudu.php">
                 
                 <label type="text" for="user">Käyttäjänimi:</label>
                 <input type="text" name="username">    

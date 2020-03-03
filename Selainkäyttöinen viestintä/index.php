@@ -1,5 +1,6 @@
 <?php 
 session_start();
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,15 @@ session_start();
             <ul class="nav navbar-nav">
                 <h1>kommenttisivu</h1>
             <li class="active"><a href="index.php">kommenttisivusto</li>
-            <li><a href="kirjaudu.php">kirjaudu</a></li>
-            <li><a href="rekisteroidy.php">rekisteröidy</a></li>
+        
+            <?php if (isset($_SESSION["username"])):?>
+                <li><a href="logout.php">kirjaa ulos <?php echo $_SESSION["username"]?></a></li>
+                 
+            <?php else: ?>
+                <li><a href="kirjaudu.php">kirjaudu</a></li>
+                <li><a href="rekisteroidy.php">rekisteröidy</a></li>
+            <?php endif; ?>
+            
             </ul>
         </div>
     </nav>        
@@ -51,12 +59,13 @@ session_start();
 include "connect_db.php";
 
 // tee sql-kysely
+
 // suorita kysely
 $sql = "SELECT id, kommentti FROM kommentit";
 $result = $conn->query($sql);
 // jos tuloksia näytä ne loopissa
 while($row = $result->fetch_assoc()){
- echo $username . $row["id"] .  $row["kommentti"]. "<br>";
+   echo $row["id"] .  $row["kommentti"]. "<br>";
 }
 $conn->close();
 ?>

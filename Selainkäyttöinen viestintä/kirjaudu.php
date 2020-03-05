@@ -3,6 +3,7 @@ session_start();
 
 
 
+
 // Tarkista tullaanko lomakkeelta
 if (isset($_POST['username']) && isset($_POST['passwd'])) {
     
@@ -14,21 +15,22 @@ if (isset($_POST['username']) && isset($_POST['passwd'])) {
 
     // Hae tietokannasta käyttäjä jonka käyttäjänimi on sama kuin lomakkeelta annettu
 
-    $stmt = $conn->prepare("SELECT user_name, email, pwd FROM users WHERE user_name = ?;");
+    $stmt = $conn->prepare("SELECT id, user_name, email, pwd FROM users WHERE user_name = ?;");
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
 
     
     // bindaus
-    $stmt->bind_result($username, $email , $passwd_hash);
+    $stmt->bind_result($id, $username, $email , $passwd_hash);
  
 
     // Jos käyttäjänimi löytyy, tarkistetaan salasana
     $stmt->fetch();
     if ($username){
         if (password_verify($passwd, $passwd_hash)){
-            $_SESSION["username"] = $username;
+            $_SESSION["username"]  = $username;
+            $_SESSION["user_id"] = $id;
             header("Location: index.php");
             die();
          } else {

@@ -2,9 +2,10 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: lavender;
 }
-.comment {
+.container {
     padding: 6px; 
     width: 200px;
     border: 5px solid;
     color: solid green;
+    display: inline-block;
 }

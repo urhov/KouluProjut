@@ -1,5 +1,11 @@
  <?php
 session_start();
+
+if (!isset($_SESSION["username"])){
+    echo "Ei lupaa tälle sivulle";
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,23 +20,24 @@ session_start();
 </body>
 </html>
 <?php
-include_once 'add_account.php';
-if (isset($_GET['username'])){
-    if (isset($_GET['comment'])){
+if (isset($_GET['comment'])){
 
-        $sql = "INSERT INTO kommentit (kommentti) VALUES ('{$_GET['comment']}');";
-        $kommentti = $_GET['comment'];
-   
-        include_once 'connect_db.php';
-   
-        $sql = "INSERT INTO kommentit (kommentti) VALUES ('{$_GET['comment']}');";
+    $comment = $_GET["comment"]; 
+    $user_id = $_SESSION["user_id"];        
+
+    $sql = "INSERT INTO kommentit (kommentti, user_id) VALUES ('$comment', $user_id);";
+  
+
+    include_once 'connect_db.php';
+
+    
 
 
-        if ($conn->query($sql) === TRUE) {
-           echo "New record created successfully";
-        } else {
-           echo "Error: " . $sql . "<br>" . $conn->error;
-       }
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
     $conn->close();
 } else {
     echo "Et tullut lomakkeelta";

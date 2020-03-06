@@ -50,8 +50,8 @@ session_start();
         </div>
     </div>
 </div>
-<div id="comment">
 <h2>kommentit</h2>
+<div id="comment">
 
 <?php 
 // avaa tietokantayhteys
@@ -60,17 +60,20 @@ include "connect_db.php";
 // tee sql-kysely
 
 // suorita kysely
-$sql = "SELECT id, kommentti, user_id
+$sql = "SELECT kommentit.id, kommentti, user_id, users.user_name
  FROM kommentit 
  INNER JOIN users ON kommentit.user_id = users.id";
 $result = $conn->query($sql);
 // jos tuloksia näytä ne loopissa
+
+
+
 while($row = $result->fetch_assoc()){
-   echo  $row["id"] . $row["user_id"] .  $row["kommentti"] . "<br>";
+   echo  "<p>".$row["user_name"] . "<br>" . $row["kommentti"] . "</p>";
 }
 $conn->close();
-?>  
-
+?> 
+    
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -1,11 +1,13 @@
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: lavender;
+
 }
-.container {
+.comment {
     padding: 6px; 
     width: 200px;
-    border: 5px solid;
-    color: solid green;
+    border: 5px black solid;
+    color: solid blue;
     display: inline-block;
+    
 }

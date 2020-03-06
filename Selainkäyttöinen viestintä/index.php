@@ -51,7 +51,7 @@ session_start();
     </div>
 </div>
 <h2>kommentit</h2>
-<div id="comment">
+<div class="comment">
 
 <?php 
 // avaa tietokantayhteys

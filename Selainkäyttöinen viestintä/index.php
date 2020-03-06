@@ -62,7 +62,7 @@ include "connect_db.php";
 // suorita kysely
 $sql = "SELECT id, kommentti, user_id
  FROM kommentit 
- INNER JOIN user_name ON kommentit.user_id = user_name . user_id";
+ INNER JOIN users ON kommentit.user_id = users.id";
 $result = $conn->query($sql);
 // jos tuloksia näytä ne loopissa
 while($row = $result->fetch_assoc()){

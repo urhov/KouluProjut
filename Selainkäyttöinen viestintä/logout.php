@@ -12,10 +12,7 @@ session_start();
 <li class="active"><a href="index.php">kommenttisivusto</li>
 
 <?php 
-
 session_unset();
-
-
 ?>
 
 

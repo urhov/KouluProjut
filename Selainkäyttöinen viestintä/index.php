@@ -1,6 +1,6 @@
 <?php 
 session_start();
- 
+date_default_timezone_set("Europe/Helsinki");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
             <a class="navbar-brand" href="#"></a>
@@ -39,42 +39,45 @@ session_start();
     <div class="row">
             <h2>Lisää kommentti</h2>
      </div>
-        <div class="row">
-            <form action="add_comment.php" method="get">
-                <div class="form-group">
-                    <label for="comment">kommentoi:</label>
-                    <textarea name="comment" cols="30" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-danger">lähetä</button>
-                </form>                
+<div class="row">
+        <form action="add_comment.php" method="get">
+            <div class="form-group">
+                <label for="comment">kommentoi:</label>
+                <textarea name="comment" cols="30" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger">lähetä</button>
+        </form>                
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>kommentit</h2>
+            <div class="teksti">
+                <?php 
+                // avaa tietokantayhteys
+                include "connect_db.php";
+
+                // tee sql-kysely
+              
+                // suorita kysely
+                $sql = "SELECT kommentit.id, kommentti, user_id, users.user_name, aika
+                FROM kommentit 
+                INNER JOIN users ON kommentit.user_id = users.id";
+                 
+                $result = $conn->query($sql); 
+                // jos tuloksia näytä ne loopissa
+
+                while($row = $result->fetch_assoc()){
+                echo  "<p>" . $row["user_name"] . $row["aika"] . "<br>" . $row["kommentti"] . "</p>";
+                } 
+                $conn->close();
+                ?> 
+            
+            </div>
         </div>
     </div>
 </div>
-<h2>kommentit</h2>
-<div class="comment">
 
-<?php 
-// avaa tietokantayhteys
-include "connect_db.php";
-
-// tee sql-kysely
-
-// suorita kysely
-$sql = "SELECT kommentit.id, kommentti, user_id, users.user_name
- FROM kommentit 
- INNER JOIN users ON kommentit.user_id = users.id";
-$result = $conn->query($sql);
-// jos tuloksia näytä ne loopissa
-
-
-
-while($row = $result->fetch_assoc()){
-   echo  "<p>".$row["user_name"] . "<br>" . $row["kommentti"] . "</p>";
-}
-$conn->close();
-?> 
     
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

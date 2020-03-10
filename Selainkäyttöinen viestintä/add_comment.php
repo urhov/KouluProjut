@@ -23,18 +23,18 @@ if (!isset($_SESSION["username"])){
 if (isset($_GET['comment'])){
 
     $comment = $_GET["comment"]; 
-    $user_id = $_SESSION["user_id"];        
-
-    $sql = "INSERT INTO kommentit (kommentti, user_id) VALUES ('$comment', $user_id);";
+    $user_id = $_SESSION["user_id"];       
+    $sql = "INSERT INTO kommentit (kommentti, user_id, aika) VALUES ('$comment', $user_id, now());";
   
 
     include_once 'connect_db.php';
 
-    
+  
 
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
+        
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

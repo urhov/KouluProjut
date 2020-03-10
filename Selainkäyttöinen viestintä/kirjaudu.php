@@ -89,9 +89,11 @@ if (isset($_POST['username']) && isset($_POST['passwd'])) {
             <form method="post" action="kirjaudu.php">
                 
                 <label type="text" for="user">Käyttäjänimi:</label>
+                <br>
                 <input type="text" name="username">    
                 <br>
                 <label type="password" for="pwd">salasana:</label>
+                <br>
                 <input type="password" name="passwd">    
         
                 </br><button type="submit" class="login-btn">kirjaudu</button><br>

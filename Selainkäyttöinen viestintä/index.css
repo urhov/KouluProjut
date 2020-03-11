@@ -8,8 +8,9 @@ body {
 .teksti p{
     padding: 5px;
     border: 1px solid black;    
-    background-color: lightskyblue; 
-    
+    background-color: rgb(161, 206, 224); 
+
+  
     border-radius: 18px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;

@@ -67,7 +67,7 @@ date_default_timezone_set("Europe/Helsinki");
                 // jos tuloksia näytä ne loopissa
 
                 while($row = $result->fetch_assoc()){
-                echo  "<p>" . $row["user_name"] . $row["aika"] . "<br>" . $row["kommentti"] . "</p>";
+                echo  "<p>" . $row["user_name"] . "&nbsp" . $row["aika"] . "<br>" . $row["kommentti"] . "</p>";
                 } 
                 $conn->close();
                 ?> 

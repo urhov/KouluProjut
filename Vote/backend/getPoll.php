@@ -23,7 +23,6 @@ if ($stmt->execute() == false){
     $data = $result;
     }
 } catch (PDOException $e) {
-
     $data = array(
         'error' => 'tapahtui virhe tallennuksessa!!'
     );
@@ -31,7 +30,7 @@ if ($stmt->execute() == false){
 }
 // get options from database
 try {
-    $stmt = $conn->prepare("SELECT id, name, votes   FROM option WHERE poll_id = :pollid");
+    $stmt = $conn->prepare("SELECT id, name, votes FROM option WHERE poll_id = :pollid");
 
     $stmt->bindParam(':pollid', $pollid);
 
@@ -45,15 +44,10 @@ if ($stmt->execute() == false){
     $data['options'] = $options;
     }
 } catch (PDOException $e) {
-
     $data = array(
         'error' => 'tapahtui virhe tallennuksessa!!'
     );
-
-
-
-
-
+}
 header("Content-type: application/json;charset=utf-8");
 echo json_encode($data);
-?>
+?> 

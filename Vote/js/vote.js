@@ -5,11 +5,13 @@ console.log(pollQueryString);
 const pollParams = new URLSearchParams(pollQueryString);
 
 if (pollParams.has('id')){
-
-
     getPollData(pollParams.get('id'));
-
 }
+
+document.getElementById('optionsUl').addEventListener('click', giveVote);
+
+
+
 
 function getPollData(id){
     console.log(id);
@@ -17,6 +19,7 @@ function getPollData(id){
     ajax.onload = function(){
         data = JSON.parse(this.responseText);
         console.log(data);
+        showPoll(data);
     }
     ajax.open("GET", "Backend/getPoll.php?id=" + id);
     ajax.send();
@@ -39,9 +42,26 @@ function showPoll(data){
 
        
         const buttonText = document.createTextNode(option.name);
-        newbutton.appendChild(buttonText);
-        newLi.appendchild(newButton);
+
+        newButton.appendChild(buttonText);
+        newLi.appendChild(newButton);
         ul.appendChild(newLi);
     });
+}
+
+// give a vote for option 
+
+function giveVote(event){
+console.log(event.target.dataset.optionid);
+
+let id = event.target.dataset.optionid;
+
+    let ajax = new XMLHttpRequest();
+    ajax.onload = function(){
+        data = JSON.parse(this.responseText);
+        console.log(data);
+    }
+    ajax.open("GET", "Backend/giveVote.php?id=" + id);
+    ajax.send();
 }
 

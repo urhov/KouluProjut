@@ -78,8 +78,8 @@ function addNewOption(event){
     // create new label
     const label = document.createElement('label');
     const forAttribute = document.createAttribute('for');
-    const labelText = document.createTextNode(`Option${optionCount}`);
-    forAttribute.value = `Option${optionCount}`;
+    const labelText = document.createTextNode(`option${optionCount}`);
+    forAttribute.value = `option${optionCount}`;
     label.setAttributeNode(forAttribute);
     label.appendChild(labelText);
     label.classList.add('form-label');
@@ -95,11 +95,11 @@ function addNewOption(event){
     input.setAttributeNode(inputType);
 
     const inputName = document.createAttribute('name');
-    inputName.value = `Option${optionCount}`;
+    inputName.value = `option${optionCount}`;
     input.setAttributeNode(inputName);
 
     const inputPlaceHolder = document.createAttribute('placeholder');
-    inputPlaceHolder.value = `Option${optionCount}`;
+    inputPlaceHolder.value = `option ${optionCount}`;
     input.setAttributeNode(inputPlaceHolder);
     
     div.appendChild(label);

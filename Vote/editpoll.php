@@ -18,22 +18,30 @@ if (!isset($_SESSION['logged_in'])){
   </div>
 
 
-  <form name="newPoll">
+  <form name="editPoll">
       <fieldset>
-        <legend>Create new poll</legend>
+        <legend>Edit poll</legend>
         <div class="form-group">
-          <label for="topic" class="form-label mt-4">Topic</label>
+          <input type="hidden" name="id">
+          <label for="topic" >Topic</label>
           <input name="topic" type="username" class="form-control" placeholder="topic">
         </div>
         <div class="form-group">
-          <label for="start" class="form-label mt-4">Start</label>
+          <label for="start">Start</label>
           <input name="start" type="datetime-local" class="form-control">
         </div>
         <div class="form-group">
-          <label for="end" class="form-label mt-4">End</label>
+          <label for="end">End</label>
           <input name="end" type="datetime-local" class="form-control">
         </div>
 
+      <!-- Additional options go here -->
+
+        <!-- <div class="form-group">
+          <label for="formFile" class="form-label mt-4">Default file input example</label>
+          <input class="form-control" type="file" id="formFile">
+        </div> -->
+        
         <h4>Poll options</h4> <button class="btn btn-primary" id="addOption">Add option</button>
         <div class="form-group">
           <label for="option1" class="form-label mt-4">Option 1</label>
@@ -44,13 +52,6 @@ if (!isset($_SESSION['logged_in'])){
           <label for="option1" class="form-label mt-4">Option 2</label>
           <input name="option2" type="username" class="form-control" placeholder="Option 2">
         </div>
-
-      <!-- Additional options go here -->
-
-        <!-- <div class="form-group">
-          <label for="formFile" class="form-label mt-4">Default file input example</label>
-          <input class="form-control" type="file" id="formFile">
-        </div> -->
       </fieldset>
       <button type="submit" class="btn btn-primary">Save poll</button>
       <button id="deleteLastOption" class="btn btn-danger">Delete last option</button>
@@ -58,7 +59,7 @@ if (!isset($_SESSION['logged_in'])){
 
 </div>
 
-  <script src="js/newPoll.js"></script>
+  <script src="js/editPoll.js"></script>
   <script src="js/common.js"></script>
 
         <?php include_once 'layout/bottom.inc.php'; ?>

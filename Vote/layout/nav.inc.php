@@ -30,6 +30,12 @@
           <a class="nav-link" href="newpoll.php">New poll</a>
         </li>
         <?php endif; ?>
+        
+        <?php if (isset($_SESSION['logged_in'])):?>
+        <li class="nav-item">
+          <a class="nav-link" href="admin.php">edit or delete poll</a>
+        </li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>

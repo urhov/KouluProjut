@@ -9,10 +9,12 @@ if(pollParams.has('id')){
 }
 
 let optionCount = 0;
+let toDelete = [];
 
 document.getElementById('addOption').addEventListener('click', addNewOption);
 document.getElementById('deleteLastOption').addEventListener('click', deleteLastOption);
 document.forms['editPoll'].addEventListener('submit', modifyPoll);
+document.querySelector('fieldset').addEventListener('click', getFieldsetClick);
 
 //get poll data from database 
 function getPollData(id){
@@ -23,7 +25,7 @@ function getPollData(id){
         console.log(data);
         populatePollForm(data);
     }
-    ajax.open("GET", "Backend/getPoll.php?id="+id);
+    ajax.open("GET", "backend/getPoll.php?id=" + id);
     ajax.send();
 }
 
@@ -48,7 +50,7 @@ function populatePollForm(data){
 // Creates new input-field to form
 function createOptionInputDiv(count, name, id){
 
- 
+    
 
     // crete new div
     const div = document.createElement('div');
@@ -79,12 +81,24 @@ function createOptionInputDiv(count, name, id){
     inputPlaceHolder.value = `option ${count}`;
     input.setAttributeNode(inputPlaceHolder);
 
-    input.dataset.optionId = id;
+    input.dataset.optionid = id;
    
     input.value = name;
 
+
+  
+    // delete button 
+    const deleteButton = document.createElement('button');
+    deleteButton.className = "btn btn-sm btn-danger float-right";
+
+    const deleteText = document.createTextNode('delete');
+    deleteButton.appendChild(deleteText);
+    deleteButton.dataset.action = 'delete';
+
+
     div.appendChild(label);
     div.appendChild(input);
+    div.appendChild(deleteButton);
 
     return div;
 }
@@ -119,8 +133,8 @@ function addNewOption(event){
     // create new label
     const label = document.createElement('label');
     const forAttribute = document.createAttribute('for');
-    const labelText = document.createTextNode(`option${optionCount}`);
-    forAttribute.value = `option${optionCount}`;
+    const labelText = document.createTextNode(`option${count}`);
+    forAttribute.value = `option${count}`;
     label.setAttributeNode(forAttribute);
     label.appendChild(labelText);
     label.classList.add('form-label');
@@ -136,11 +150,11 @@ function addNewOption(event){
     input.setAttributeNode(inputType);
 
     const inputName = document.createAttribute('name');
-    inputName.value = `option${optionCount}`;
+    inputName.value = `option${count}`;
     input.setAttributeNode(inputName);
 
     const inputPlaceHolder = document.createAttribute('placeholder');
-    inputPlaceHolder.value = `option ${optionCount}`;
+    inputPlaceHolder.value = `option ${count}`;
     input.setAttributeNode(inputPlaceHolder);
     
     div.appendChild(label);
@@ -168,11 +182,16 @@ function modifyPoll(event){
 
     inputs.forEach(function(input){
         if(input.name.indexOf('option') == 0){
-            options.push({ id: input.dataset.optionid, name: input.value })
+            options.push({ id: input.dataset.optionid, name: input.value });
         }
     })
 
     pollData.options = options;
+
+    //deleted options 
+    pollData.todelete = toDelete;
+
+
 
     console.log(pollData);
 
@@ -180,11 +199,31 @@ function modifyPoll(event){
     let ajax = new XMLHttpRequest();
     ajax.onload = function(){
         let data = JSON.parse(this.responseText);
-        console.log(data);
+        if (data.hasOwnProperty('success')){
+            window.location.href = "admin.php?type=success&msg=Poll edited";
+        } else {
+            showMessage('error', data.error);
+        }
     }
     ajax.open("POST", "backend/modifyPoll.php", true);
     ajax.setRequestHeader("Content-Type", "application/json");
     ajax.send(JSON.stringify(pollData));
 
 
+}
+
+
+function getFieldsetClick(event){
+    event.preventDefault();
+    console.log(event.target)
+    let btn = event.target;
+
+    if(btn.dataset.action == 'delete'){
+        let div = btn.parentElement;
+        let input = div.querySelector('input');
+        let fieldset = div.parentElement;
+        toDelete.push({id: input.dataset.optionid});
+        fieldset.removeChild(div);
+        
+    }
 }

@@ -39,7 +39,7 @@ if ($stmt->execute() == false){
         'error' => 'Error occured'
     );
 } else {
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $options = $result;
     $data['options'] = $options;
     }

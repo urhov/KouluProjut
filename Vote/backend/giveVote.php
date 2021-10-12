@@ -17,22 +17,54 @@ tarkistetaan ennen äänestystä seuraavat asiat:
 2) äänestystä voi edelleen äänestää: 
     eli tämä päivämäärä on alku ja loppu -päivän välissä
 
-    täytyy 
+    täytyy hakea tietoja poll-taulusta
 */
+$data = array();
 
 try {
-    $stmt = $conn->prepare("UPDATE option SET votes = votes + 1 WHERE (id = :optionid);");
-    $stmt->bindParam(':optionid', $optionid);
+    
+    $stmt = $conn->prepare("SELECT id, start, end 
+                            FROM poll
+                            WHERE id = (
+                                SELECT poll_id
+                                FROM option 
+                                WHERE id = :optionid
+                            );");
+        $stmt->bindParam(":optiondid", $optionid);
 
-if ($stmt->execute() == false){
-    $data = array(
-        'error' => 'Error occured'
-    );
-} else {
-    $data = array(
-        'success' => 'Vote successfull!'
-        );
+    if ($stmt->execute() == false){
+        $data['error'] = 'error occured';
+    } else {
+        // haetaan äänestyksen id
+        $poll = $stmt->fetch(PDO::FETCH_ASSOC);
+        $pollid = $poll['id'];
+     //selvitettään onko käyttäjä jo äänestänyt kyseistä äänestystä
+     $cookie_name = "poll_$pollid";
+     if (isset($_COOKIE[$cookie_name])){
+        $data['warning'] = 'you allready voted this poll';
+        }
     }
+
+    // jos ei tullut varoitusta, niin voidaan tallentaa ääni
+        if (!array_key_exists('warning',$data)){
+
+            $stmt = $conn->prepare("UPDATE option SET votes = votes + 1 WHERE (id = :optionid);");
+            $stmt->bindParam(':optionid', $optionid);
+        
+        if ($stmt->execute() == false){
+            $data ['error'] = 'Error occured';
+            
+        } else {
+            $data['success'] = 'Vote successfull!';
+
+            // asetetaan eväste
+            $cookie_name = "poll_$pollid";
+            $cookie_value = 1;
+            setcookie($cookie_name, $cookie_value, time() + (86400*30), "/");
+                
+            }
+    }
+ 
 } catch (PDOException $e) {
     $data = array(
         'error' => 'tapahtui virhe tallennuksessa!!'

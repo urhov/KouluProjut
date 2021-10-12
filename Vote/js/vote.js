@@ -59,7 +59,14 @@ let id = event.target.dataset.optionid;
     let ajax = new XMLHttpRequest();
     ajax.onload = function(){
         data = JSON.parse(this.responseText);
-        console.log(data);
+        
+        if(data.hasOwnProperty('success')){
+            showMessage('success', data.success);
+        } else if(data.hasOwnProperty('warning')){
+            showMessage('warning', data.warning);
+        }
+
+
     }
     ajax.open("GET", "Backend/giveVote.php?id=" + id);
     ajax.send();

@@ -30,19 +30,36 @@ try {
                                 FROM option 
                                 WHERE id = :optionid
                             );");
-        $stmt->bindParam(":optiondid", $optionid);
+        $stmt->bindParam(":optionid", $optionid);
 
     if ($stmt->execute() == false){
         $data['error'] = 'error occured';
     } else {
-        // haetaan äänestyksen id
         $poll = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // haetaan äänestyksen id
+        
         $pollid = $poll['id'];
+
+        // Muodostetaan start ja end päivämääristä timestamp-tyyppiset arvot 
+        $current_timestamp = time(); 
+        $start_timestamp = strtotime($poll['start']);
+        $end_timestamp = strtotime($poll['end']);
+
      //selvitettään onko käyttäjä jo äänestänyt kyseistä äänestystä
      $cookie_name = "poll_$pollid";
      if (isset($_COOKIE[$cookie_name])){
-        $data['warning'] = 'you allready voted this poll';
+        $data['warning'] = 'you already voted this poll';
+
+        // Jos äänestys on vanhentunut
+        } else if ($end_timestamp < $current_timestamp) {
+            $data['warning'] = 'poll is out of date and no longer available for voting!';
+
+            // tai se ei ole vielä saatavilla
+        } else if ($end_timestamp > $current_timestamp) {
+            $data['warning'] = 'poll is not yet available for voting!';
         }
+
     }
 
     // jos ei tullut varoitusta, niin voidaan tallentaa ääni
